@@ -1,10 +1,11 @@
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+var WebpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('../webpack.config.js')
 var app = express()
 // 监听端口
-var port = 3030
+var port = 8080
 // 加载webpack配置
 var compiler = webpack(webpackConfig)
 // 加载中间件webpack-dev-middleware
@@ -26,11 +27,15 @@ app.use(require('webpack-hot-middleware')(compiler))
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../index.html'))
 })
-// 监听3030端口，开启服务
-app.listen(port, function (err) {
+// 监听8080端口，开启服务
+new WebpackDevServer(webpack(webpackConfig), {
+  publicPath: webpackConfig.output.publicPath,
+  hot: true,
+  historyApiFallback: true
+}).listen(8080, 'localhost', function (err, result) {
   if (err) {
-    console.error(err)
-  } else {
-    console.info('Listening on port %s', port)
+    return console.log(err);
   }
-})
+
+  console.log('Listening at http://localhost:8080/')
+});
