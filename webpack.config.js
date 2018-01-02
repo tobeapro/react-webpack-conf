@@ -1,13 +1,13 @@
 var path = require('path')
 var webpack = require('webpack')
+var WebpackDevServer = require('webpack-dev-server')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'http://localhost:3030/dist/'
+    publicPath: './'
   },
   module: {
     rules: [{
@@ -29,11 +29,12 @@ module.exports = {
         loader: 'style!css!postcss!sass?outputStyle=expanded'
     }]
   },
-  // 插件
   plugins: [
-    // 启用热更新
+    new HtmlWebpackPlugin({
+        template: './index.html',
+        fileName:'index.html'
+    }),
     new webpack.HotModuleReplacementPlugin(),
-    // 允许错误不打断程序
     new webpack.NoEmitOnErrorsPlugin()
   ]
 }

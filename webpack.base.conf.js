@@ -1,18 +1,24 @@
-import path from 'path'
-export default {
+var path = require('path')
+module.exports = {
   // 入口
   entry: {
-    app: './src/main.js'
+    app: [
+      'webpack-hot-middleware/client?reload=true',
+      'webpack/hot/only-dev-server',
+      './src/main.js'
+    ],
+    vendors: ['react','react-dom']
   },
   // 出口
   output: {
     // 服务器静态资源目录
-    publicPath: 'http://loaclhost:3030/dist',
+    publicPath: 'http://localhost:3000/dist',
     // 出口文件目录
     path: path.resolve(__dirname, 'dist'),
     // 出口文件名
-    filename: 'bundle.js'
+    filename: '[name]-[hash].js'
   },
+  devtool: 'source-map',
   // 模块
   module: {
     rules: [
@@ -30,6 +36,14 @@ export default {
             presets: ['es2015', 'react']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        loader: "style!css"
+      },
+      {
+          test: /\.scss$/,
+          loader: 'style!css!postcss!sass?outputStyle=expanded'
       }
     ]
   }
