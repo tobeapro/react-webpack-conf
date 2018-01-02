@@ -25,23 +25,22 @@ app.use(require('webpack-dev-middleware')(compiler, {
   }
 }))
 // 所有请求
-app.get('*', function (req, res) {
-  console.log(123)
-  res.sendFile(path.join(__dirname, '../index.html'))
-})
+// app.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../index.html'))
+// })
 // 加载中间件webpack-hot-middleware
-var WebpackHotMiddleware = require('webpack-hot-middleware');
 // 热加载，实时更新改变
- app.use(WebpackHotMiddleware(compiler,{
-    publicPath: 'webpackConfig.output.publicPath',
-    hot: true,
-    historyApiFallback: true
- }))
+// app.use(require('webpack-hot-middleware')(compiler,{
+//     publicPath: webpackConfig.output.publicPath,
+//     hot: true,
+//     historyApiFallback: true
+//  }))
 // 监听3000端口，开启服务
 new WebpackDevServer(compiler, {
   publicPath: webpackConfig.output.publicPath,
   hot: true,
-  historyApiFallback: true
+  historyApiFallback: false,
+  stats: { colors: true }
 }).listen(port, 'localhost', function (err, result) {
   if (err) {
     return console.log(err);

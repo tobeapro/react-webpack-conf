@@ -4,15 +4,17 @@ module.exports = {
   entry: {
     app: [
       'webpack-hot-middleware/client?reload=true',
-      'webpack/hot/only-dev-server',
+      'webpack-dev-server/client?http://localhost:3000/',
+      'webpack/hot/dev-server',
       './src/main.js'
     ],
+    'babel-polyfill': 'babel-polyfill',
     vendors: ['react','react-dom']
   },
   // 出口
   output: {
     // 服务器静态资源目录
-    publicPath: 'http://localhost:3000/dist',
+    publicPath: '/',
     // 出口文件目录
     path: path.resolve(__dirname, 'dist'),
     // 出口文件名
