@@ -4,7 +4,6 @@ module.exports = {
   entry: {
     app: [
       'webpack-hot-middleware/client?reload=true',
-      'webpack-dev-server/client?http://localhost:3000/',
       'webpack/hot/dev-server',
       './src/main.js'
     ],
@@ -44,8 +43,8 @@ module.exports = {
         loader: "style!css"
       },
       {
-          test: /\.scss$/,
-          loader: 'style!css!postcss!sass?outputStyle=expanded'
+        test: /\.scss$/,
+        loader: 'style!css!postcss!sass?outputStyle=expanded'
       }
     ]
   }

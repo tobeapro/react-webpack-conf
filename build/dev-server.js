@@ -1,7 +1,6 @@
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var WebpackDevServer = require('webpack-dev-server')
 var webpackConfig = require('../webpack.dev.conf.js')
 var app = express()
 var port=3000
@@ -24,24 +23,15 @@ app.use(require('webpack-dev-middleware')(compiler, {
       poll: true
   }
 }))
-// 所有请求
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname, '../index.html'))
-// })
 // 加载中间件webpack-hot-middleware
 // 热加载，实时更新改变
-// app.use(require('webpack-hot-middleware')(compiler,{
-//     publicPath: webpackConfig.output.publicPath,
-//     hot: true,
-//     historyApiFallback: true
-//  }))
+app.use(require('webpack-hot-middleware')(compiler,{
+    publicPath: webpackConfig.output.publicPath,
+    hot: true,
+    historyApiFallback: true
+ }))
 // 监听3000端口，开启服务
-new WebpackDevServer(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  hot: true,
-  historyApiFallback: false,
-  stats: { colors: true }
-}).listen(port, 'localhost', function (err, result) {
+app.listen(port, 'localhost', function (err, result) {
   if (err) {
     return console.log(err);
   }

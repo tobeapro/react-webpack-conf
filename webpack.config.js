@@ -3,10 +3,14 @@ var webpack = require('webpack')
 var WebpackDevServer = require('webpack-dev-server')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    app:'./src/main.js',
+    'babel-polyfill': 'babel-polyfill',
+    vendors: ['react','react-dom']
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: './'
   },
   module: {
