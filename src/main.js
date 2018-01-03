@@ -2,26 +2,20 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import detail from './components/detail/detail'
 import { Router, Route, hashHistory } from 'react-router'
-// const HelloReact = React.createClass({
-//     render: function() {
-//       return <h1>Hello {this.props.name}</h1>
-//     }
-//   })
-// ReactDom.render(<HelloReact name="react" />, document.getElementById('app'))
-function tick() {
-    const element = (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {new Date().toLocaleTimeString()}.</h2>
-      </div>
-    );
-    ReactDom.render(
-      <div>
-          {element}
-          {detail}
-      </div>,
-      document.getElementById('app')
-    );
+class HelloReact extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 123,
+    };
+  }  
+  handle() {
+    this.setState((state)=>({
+      value: state.value+1
+    }))
   }
-  
-  setInterval(tick, 1000)
+  render () {
+      return <h1 onClick={this.handle.bind(this)}>Hello {this.props.name}{detail}{this.state.value}</h1>
+    }
+  }
+ReactDom.render(<HelloReact name="react"/>, document.getElementById('app'))

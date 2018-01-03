@@ -1,16 +1,5 @@
 var path = require('path')
-var webpack = require('webpack')
 module.exports = {
-  // 入口
-  entry: {
-    app: [
-      'webpack-hot-middleware/client?reload=true',
-      'webpack/hot/dev-server',
-      './src/main.js'
-    ],
-    'babel-polyfill': 'babel-polyfill',
-    vendors: ['react','react-dom','react-router']
-  },
   // 出口
   output: {
     publicPath: '/',
