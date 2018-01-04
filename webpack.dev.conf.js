@@ -6,11 +6,11 @@ module.exports = merge(baseWebpackConfig, {
   entry: {
     app: [
       'webpack-hot-middleware/client?reload=true',
-      'webpack/hot/dev-server',
+      'webpack/hot/only-dev-server',
       './src/main.js'
     ],
     'babel-polyfill': 'babel-polyfill',
-    vendors: ['react', 'react-dom', 'react-router']
+    vendors: ['react', 'react-dom', 'react-router-dom']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
