@@ -8,7 +8,7 @@ module.exports = merge(baseWebpackConfig, {
   entry: {
     app: './src/main.js',
     'babel-polyfill': 'babel-polyfill',
-    vendors: ['react', 'react-dom','react-router']
+    vendors: ['react', 'react-dom','react-router-dom']
   },
   plugins: [
     //打包前清除
