@@ -1,5 +1,14 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import './home.scss'
-const home = <p className='home'>hello,<span className='bold'>home</span></p>
+class home extends React.Component{
+  render () {
+    return (
+      <p className='home'>
+        This is
+        <span className='bold'> home</span>
+      </p>
+    )
+  }
+}
 export default home
