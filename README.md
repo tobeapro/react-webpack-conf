@@ -65,7 +65,7 @@ module.exports = {
 }
 
 ```
-##### 大致就是这样，这是一个简单的实例将`src目录下的main.js`作为入口打包成进`dist目录下的bundle.js`,然后在页面引用这个js就可以了
+##### 大致就是这样，这是一个简单的实例将`src目录下的main.js`作为入口打包进`dist目录下的bundle.js`,然后在页面引用这个js就可以了
 ##### 这是个简单的例子，开发过程中我们还需要`babel转码`,`热更新`，`调试`等,打包时成生产环境代码还需要`压缩`，`分离第三方库`等功能。
 ##### 接下来进行项目完善
 ```
@@ -159,13 +159,13 @@ module.exports = {
 ```
 npm install css-loader style-loader sass-loader node-loader file-loader react-hot-loader --save-dev
 ```
-##### 使用`test`匹配正则加载需要的`loader`，css预处理器使用的`scss`(scss可以看做sass的升级),`react-hot-loader`是热跟心中需要用到的
+##### 使用`test`匹配正则加载需要的`loader`，css预处理器使用的`scss`(scss可以看做sass的升级),`react-hot-loader`是热更新中需要用到的
 ##### 然后新建`webpack.dev.conf.js`和`webpack.prod.conf.js`为开发环境打包和生产环境打包，添加使用过程中的依赖
 ```
 npm install webpack-dev-middleware webpack-hot-middleware webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin express --save-dev
 ```
-使用`webpack-merge`继承`webpack.base.conf.js`中的配置，再单独配置（详细直接看代码）
-我们将自己的代码、第三方库、转码用到的babel-polyfill分开打包，这样再根据`[name]-[hash].js`打包出三个文件
+##### 使用`webpack-merge`继承`webpack.base.conf.js`中的配置，再单独配置（详细直接看代码）
+##### 我们将自己的代码、第三方库、转码用到的babel-polyfill分开打包，这样再根据`[name]-[hash].js`打包出三个文件
 ##### 在`plugins`中加入`webpack.optimize.CommonsChunkPlugin()`将第三方库配置为公共代码（公共代码加载页面时会先引用）
 ##### 加入`HtmlWebpackPlugin`配置，配置项目打包时引用的模板，我们一般在根目录下建议一个`index.html`的页面
 ##### 加入`UglifyJsPlugin`用来压缩代码
