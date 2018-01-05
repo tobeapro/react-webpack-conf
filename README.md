@@ -1,6 +1,6 @@
 ## react-cli
 > 学习webpack,搭建一个自己的react脚手架工具
-### 项目依赖
+### 一、项目依赖
 ```
 "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -30,18 +30,18 @@
     "webpack-merge": "^4.1.1"
   }
 ```
-### 初始化项目
+### 二、初始化项目
 ```
 npm init //会生成一个package.json
 ```
-### 安装依赖
-`react: ^16.2.0` `react-dom: ^16.2.0`  `react-router-dom:^4.2.2`
+### 三、安装依赖
+`react: ^16.2.0`    `react-dom: ^16.2.0`    `react-router-dom:^4.2.2`
 ```
 npm install react react-dom react-router-dom babel-polyfill --save  // babel-polyfill用来支持es6语法
 ```
-#### 开发过程中的依赖
+### 四、开发过程中的依赖
 `webpack: ^3.10.0`
-首先是webpack，其实主要就是webpack配置
+##### 首先是webpack，其实主要就是webpack配置
 ```
 npm install webpack --save-dev
 ```
@@ -166,12 +166,12 @@ npm install webpack-dev-middleware webpack-hot-middleware webpack-merge clean-we
 ```
 使用`webpack-merge`继承`webpack.base.conf.js`中的配置，再单独配置（详细直接看代码）
 我们将自己的代码、第三方库、转码用到的babel-polyfill分开打包，这样再根据`[name]-[hash].js`打包出三个文件
-#### 在`plugins`中加入`webpack.optimize.CommonsChunkPlugin()`将第三方库配置为公共代码（公共代码加载页面时会先引用）
-#### 加入`HtmlWebpackPlugin`配置，配置项目打包时引用的模板，我们一般在根目录下建议一个`index.html`的页面
-#### 加入`UglifyJsPlugin`用来压缩代码
-#### 加入`CleanWebpackPlugin`配置，每次打包时先清空
-#### 配置`HotModuleReplacementPlugin`和`NoEmitOnErrorsPlugin`分别为热更新使用和打包出现错误不会退出
-#### 然后`dev开发环境`比`prod生产环境`配置的入口文件中多了两行,是为了开发环境中`热更新`配置的
+##### 在`plugins`中加入`webpack.optimize.CommonsChunkPlugin()`将第三方库配置为公共代码（公共代码加载页面时会先引用）
+##### 加入`HtmlWebpackPlugin`配置，配置项目打包时引用的模板，我们一般在根目录下建议一个`index.html`的页面
+##### 加入`UglifyJsPlugin`用来压缩代码
+##### 加入`CleanWebpackPlugin`配置，每次打包时先清空
+##### 配置`HotModuleReplacementPlugin`和`NoEmitOnErrorsPlugin`分别为热更新使用和打包出现错误不会退出
+##### 然后`dev开发环境`比`prod生产环境`配置的入口文件中多了两行,是为了开发环境中`热更新`配置的
 ```
 entry: {
     app: [
@@ -184,10 +184,10 @@ entry: {
   }
 ```
 
-#### 接下来为开发环境配置本地服务器，`webpack`有个`webpack-dev-server`，相当于webpack自己加的服务器,可以自己去研究下，我开始没用起来，还是选择了express
-#### 在`build`文件夹下新建一个`dev.server.js`文件，然后给开发环境配置服务器,引用`webpack-dev-middleware`和`webpack-hot-middleware`配置自动打包和自动刷新页面,具体的在代码中也有相应注释，更多参数配置可以看官方文档
-#### [webpack中文文档](https://doc.webpack-china.org/concepts/)
-#### 然后直接说的在命令行中直接使用`webpack`打包的是`webpack.config.js`文件，现在我们改写了，就在`package.json`中配置一个
+##### 接下来为开发环境配置本地服务器，`webpack`有个`webpack-dev-server`，相当于webpack自己加的服务器,可以自己去研究下，我开始没用起来，还是选择了express
+##### 在`build`文件夹下新建一个`dev.server.js`文件，然后给开发环境配置服务器,引用`webpack-dev-middleware`和`webpack-hot-middleware`配置自动打包和自动刷新页面,具体的在代码中也有相应注释，更多参数配置可以看官方文档
+##### [webpack中文文档](https://doc.webpack-china.org/concepts/)
+##### 然后直接说的在命令行中直接使用`webpack`打包的是`webpack.config.js`文件，现在我们改写了，就在`package.json`中配置一个
 ```
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1", 
@@ -195,7 +195,7 @@ entry: {
 +    "dev": "node build/dev-server.js"
   }
 ```
-#### 这样在命令行中使用
+##### 这样在命令行中使用
 ```
 npm run build //使用生产环境打包
 npm run dev   //启动开发环境调试,当代码发生更改会自动刷新页面
