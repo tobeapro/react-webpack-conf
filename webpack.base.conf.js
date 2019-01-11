@@ -4,7 +4,7 @@ module.exports = {
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name]-[hash].js'
+    filename: 'js/[name]-[hash].js'
   },
   // 模块
   module: {
@@ -20,11 +20,11 @@ module.exports = {
     },
     {
       test: /\.css$/,
-      use: ['style-loader','css-loader']
+      use: ['style-loader', 'css-loader']
     },
     {
       test: /\.scss$/,
-      use: ['style-loader','css-loader','sass-loader']
+      use: ['style-loader', 'css-loader', 'sass-loader']
     },
     {
       test: /\.(png|svg|jpg|gif)$/,
