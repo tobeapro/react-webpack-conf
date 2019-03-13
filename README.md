@@ -5,7 +5,7 @@
 
 #### 相关依赖说明
 
-```json
+```javascript
 "devDependencies": {
     "@babel/core": "^7.2.2", //babel核心库
     "@babel/plugin-proposal-class-properties": "^7.3.4", //兼容class property
