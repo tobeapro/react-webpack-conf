@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
 	entry: './src/index.js',
 	output: {
@@ -10,9 +11,16 @@ module.exports = {
 	module: {
 	    rules: [
 	      {
-	        test: /(\.jsx?)$/,
+	        test: /\.jsx?$/,
 	        use: [
 	        	{ loader:'babel-loader' }
+	        ]
+		  },
+		  {
+	        test: /\.tsx?$/,
+	        use: [
+				{ loader:'babel-loader' },
+	        	{ loader:'awesome-typescript-loader' }
 	        ]
 	      },
 	      {
@@ -29,17 +37,19 @@ module.exports = {
 	        ]
 	      },
 	      {
-            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-            loader: 'file-loader',
+            test: /\.(png|jpe?g|gif|svg)$/,
+            loader: 'url-loader',
             options:{
-                name:'img/[name]-[hash].[ext]'
+            	limit: 8192,
+            	outputPath:'/',
+                name:'img/[name].[hash:7].[ext]'
             }
 	      },
           {
-            test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+            test: /\.(woff2?|eot|ttf|otf)$/,
             loader: 'file-loader',
             options:{
-                name:'font/[name]-[hash].[ext]'
+                name:'font/[name].[hash:7].[ext]'
             }
           }
 	    ]
@@ -50,12 +60,16 @@ module.exports = {
       		chunkFilename: "[id].css"
 	    }),
 		new HtmlWebpackPlugin({
-			template: './src/index.html'
-		})
+			template: './public/index.html'
+		}),
+		new CopyPlugin([
+	      { from: 'public', to: '../dist', ignore: ['*.html'] },
+	    ])
 	],
 	resolve: {
+		extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
 		alias: {
-			'src': path.resolve(__dirname, '../src')
+			'@': path.resolve(__dirname, '../src')
 		}
 	}
 }
