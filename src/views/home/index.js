@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { List } from 'antd';
+// import { Hello } from '@/components/hello';
 export default class Home extends Component{
 	constructor(props){
 		super(props)
@@ -22,6 +23,7 @@ export default class Home extends Component{
 		}
 	}
 	render() {
+		 const props = { compiler: 'string1', framework: 'string2' }
 		return (
 			<div>
 				<h1>This is home page</h1>
