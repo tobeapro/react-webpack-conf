@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import { Menu, Icon, Button } from 'antd';
-import Home from '@/views/home/';
-import Detail from '@/views/detail/';
-import User from '@/views/user/';
-import NotFound from '@/views/404/';
+import Home from 'src/views/home/';
+import Detail from 'src/views/detail/';
+import User from 'src/views/user/';
+import NotFound from 'src/views/404';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-export default class App extends Component{
+export default class App extends React.Component{
 	render() {
 		return (
 				<Router>

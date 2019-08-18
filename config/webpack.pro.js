@@ -1,12 +1,10 @@
 const path = require('path');
-const webpackBase = require('./webpack.base.js');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-module.exports = merge(webpackBase,{
-	mode: 'production',
-	plugins: [
-		new CleanWebpackPlugin(['dist'],{
-			root: path.resolve(__dirname,'../')
-		})
-	]
+const baseConfig = require('./webpack.base');
+module.exports = merge(baseConfig,{
+    mode:'production',
+    plugins:[
+        new CleanWebpackPlugin()
+    ]
 })

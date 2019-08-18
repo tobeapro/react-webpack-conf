@@ -1,19 +1,18 @@
 {
     "compilerOptions": {
+        "allowJs":true,
         "outDir": "./dist/",
         "sourceMap": false,
         "noImplicitAny": true,
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
-        "allowJs": true
+        "baseUrl":"./",
+        "paths": {
+            "src": ["src"]
+          }
     },
     "include": [
         "./src/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "public"
     ]
 }

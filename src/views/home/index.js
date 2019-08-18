@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { List } from 'antd';
-// import { Hello } from '@/components/hello';
+import Hello from 'src/components/hello';
 export default class Home extends Component{
 	constructor(props){
 		super(props)

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import bg from '@/assets/bg.png';
+import bg from 'src/assets/img/bg.png';
 export default class Detail extends Component{
 	constructor(props){
 		super(props)
