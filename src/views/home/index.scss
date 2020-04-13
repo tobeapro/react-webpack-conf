@@ -1,0 +1,15 @@
+.home{
+    padding:20px;
+    height:100vh;
+    background: url('../../asset/img/pic.png');
+    h1{
+        color:#fff;
+    }
+    h2{
+        color:#40a9ff;
+        cursor: pointer;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
