@@ -12,7 +12,7 @@ import { Layout, Menu } from 'antd'
 const { Content, Sider } = Layout
 import routes from '@/router'
 export default class App extends Component{
-    constructor(props){
+    constructor(props:any){
         const pathname = window.location.pathname.split('/')[1]
         super(props)
         this.state = {

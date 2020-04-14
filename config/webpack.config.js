@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
-        entry:'./src/index.js',
+        entry:'./src/index.tsx',
         output:{
             path: path.resolve(__dirname,'../dist'),
             filename: 'js/[name].[contenthash:8].js'
@@ -12,7 +12,7 @@ module.exports = {
         module:{
             rules: [
                 {
-                    test:/\.js$/,
+                    test:/\.(j|t)sx?$/,
                     use:'babel-loader?cacheDirectory=true',
                     include: path.resolve(__dirname,'../src/')
                 },
@@ -68,6 +68,7 @@ module.exports = {
             }])
         ],
         resolve:{
+            extensions:['.js','.ts','.tsx','.css'],
             alias: {
                 '@': path.resolve(__dirname, '../src')
             }
