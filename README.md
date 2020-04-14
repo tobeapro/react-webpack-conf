@@ -1,8 +1,9 @@
 ## 基于webpack4的react单页面配置
 #### 相关依赖
 ```json
-"dependencies": {
+  "dependencies": {
     "@babel/runtime": "^7.9.2",
+    "@babel/runtime-corejs3": "^7.9.2",
     "antd": "^4.0.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -21,7 +22,6 @@
     "@types/react-dom": "^16.9.6",
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.4",
-    "@types/redux": "^3.6.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
