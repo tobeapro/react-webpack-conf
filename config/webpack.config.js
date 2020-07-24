@@ -13,7 +13,10 @@ module.exports = {
             rules: [
                 {
                     test:/\.(j|t)sx?$/,
-                    use:'babel-loader?cacheDirectory=true',
+                    use:[
+                        'babel-loader?cacheDirectory=true',
+                        'eslint-loader'
+                    ],
                     include: path.resolve(__dirname,'../src/')
                 },
                 {
