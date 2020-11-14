@@ -7,13 +7,13 @@ import {
   } from "react-router-dom"
 import { Provider } from 'react-redux'
 import store from '@/store'
-import '@/asset/css/common.scss'
+import '@/asset/css/common.less'
 import { Layout, Menu } from 'antd'
 const { Content, Sider } = Layout
 import routes from '@/router'
 
 interface Iprops {
-    [propName:string]: string
+  [propName:string]: string
 }
 export default class App extends Component<Iprops>{
     constructor(props:Iprops){
