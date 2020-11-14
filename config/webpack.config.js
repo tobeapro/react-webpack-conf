@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -13,7 +14,7 @@ module.exports = {
     rules: [
       {
         test: /\.(j|t)sx?$/,
-        use: ['babel-loader?cacheDirectory=true', 'eslint-loader'],
+        use: ['babel-loader?cacheDirectory=true'],
         include: path.resolve(__dirname, '../src/'),
       },
       {
@@ -68,6 +69,7 @@ module.exports = {
         ignore: ['*.html'],
       },
     ]),
+    new ESLintPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.css'],
